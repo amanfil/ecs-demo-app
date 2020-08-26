@@ -9,7 +9,7 @@
     "containerDefinitions": [
         {
             "environment": [],
-            "name": "simple-app",
+            "name": "ecs-demo-app",
             "image": "482673545144.dkr.ecr.us-west-2.amazonaws.com/ecs-demo-app:v_%BUILD_NUMBER%",
             "cpu": 1,
             "memory": 500,
@@ -35,11 +35,11 @@
         {
             "name": "busybox",
             "image": "busybox",
-            "cpu": 10,
+            "cpu": 1,
             "memory": 500,
             "volumesFrom": [
             {
-              "sourceContainer": "simple-app"
+              "sourceContainer": "ecs-demo-app"
             }
             ],
             "entryPoint": [
