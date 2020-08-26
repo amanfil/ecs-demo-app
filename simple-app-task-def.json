@@ -10,8 +10,8 @@
         {
             "environment": [],
             "name": "simple-app",
-            "image": "amazon/amazon-ecs-sample",
-            "cpu": 10,
+            "image": "482673545144.dkr.ecr.us-west-2.amazonaws.com/ecs-demo-app:v_%BUILD_NUMBER%",
+            "cpu": 1,
             "memory": 500,
             "portMappings": [
                 {
