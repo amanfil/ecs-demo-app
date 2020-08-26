@@ -1,55 +1,18 @@
-{
-    "family": "ecs-demo-app",
-    "volumes": [
-        {
-            "name": "my-vol",
-            "host": {}
-        }
-    ],
+
+   {   "family": "ecs-demo-app",
     "containerDefinitions": [
         {
-            "environment": [],
-            "name": "ecs-demo-app",
             "image": "482673545144.dkr.ecr.us-west-2.amazonaws.com/ecs-demo-app:v_%BUILD_NUMBER%",
+            "name": "ecs-demo-app",
             "cpu": 1,
-            "memory": 500,
+            "memory": 256,
+            "essential": true,
             "portMappings": [
                 {
                     "containerPort": 80,
                     "hostPort": 80
                 }
-            ],
-            "mountPoints": [
-                {
-                    "sourceVolume": "my-vol",
-                    "containerPath": "/var/www/my-vol"
-                }
-            ],
-            "entryPoint": [
-                "/usr/sbin/apache2",
-                "-D",
-                "FOREGROUND"
-            ],
-            "essential": true
-        },
-        {
-            "name": "busybox",
-            "image": "busybox",
-            "cpu": 1,
-            "memory": 500,
-            "volumesFrom": [
-            {
-              "sourceContainer": "ecs-demo-app"
-            }
-            ],
-            "entryPoint": [
-                "sh",
-                "-c"
-            ],
-            "command": [
-                "/bin/sh -c \"while true; do /bin/date > /var/www/my-vol/date; sleep 1; done\""
-            ],
-            "essential": false
+            ]
         }
     ]
 }
